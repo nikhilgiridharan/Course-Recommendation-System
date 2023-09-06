@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UT Dallas Course Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>UT Dallas Course Search</h1>
+
+    <form action="/search" method="post">
+        <label for="courseSearch">Select a course subject:</label>
+        <select id="courseSearch" name="courseSearch">
+                <option value="0">-Select a Subject-</option>
+            {% for subject in subjects %}
+                <option value="{{subject[0]}}">{{subject[1]}}</option>
+            {% endfor %}
+        </select>
+        <div class="col-md-2 col-sm-2 padd-0 m-clear">
+            <br>
+            <button type="submit" class="btn theme-btn cl-white seub-btn">Search</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,24 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UT Dallas Course Search</title>
+    <title>Comet Search</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/scripts/popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/styles/searchStyles.css">
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+    </script>
 </head>
 <body>
-    <h1>UT Dallas Course Search</h1>
+    <h1>Comet Search</h1>
 
-    <form action="/search" method="post">
-        <label for="courseSearch">Select a course subject:</label>
-        <select id="courseSearch" name="courseSearch">
-                <option value="0">-Select a Subject-</option>
-            {% for subject in subjects %}
-                <option value="{{subject[0]}}">{{subject[1]}}</option>
+    <div class="container">
+        <h2>Search courses</h2>
+        <form action="/search" method="post">
+            <div style="text-align: left;">
+                <input type="text" name="searchText" placeholder="Type a Course Name or Number" size="30"> <br> <br>
+                <label for="subjectCategory">Subject:</label>
+                <select id="subjectCategory" name="subjectCategory">
+                    <option value="">-Select a Subject-</option>
+                    {% for subject in subjects %}
+                        <option value="{{subject[0]}}">{{subject[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br><br>
+            <button type="submit">Search</button>
+        </form>
+
+        <style>
+    .right-align {
+        text-align: right;
+    }
+</style>
+
+<div class="right-align">
+    <label for="sortOptions">Sort by:</label>
+    <select id="sortOptions" name="sortOptions">
+        <option value="">-Select Sorting Option-</option>
+        <option value="difficultyHighLow">Difficulty: Highest to Lowest</option>
+        <option value="difficultyLowHigh">Difficulty: Lowest to Highest</option>
+        <option value="teacherQualityLowHigh">Teacher Quality: Lowest to Highest</option>
+        <option value="teacherQualityHighLow">Teacher Quality: Highest to Lowest</option>
+    </select>
+</div>
+
+
+        <table>
+            <tr>
+                <th>Course Number</th>
+                <th>Course Name</th>
+                <th>Teacher Name</th>
+                <th>Difficulty</th>
+                <th>Teacher Quality</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course[0] }}<div onclick="openPopup()">
+                    <img src="/static/img/infoIcon.png" alt="" width="15" height="15"/></div></td>
+                <!-- Popup Window -->
+                <div id="popupWindow" style="display:none;">
+                    <!-- Content of the Popup -->
+                    <p>Information about the course...</p>
+                    <button onclick="closePopup()">Close</button>
+                </div>
+
+                <td>{{ course[1] }}</td>
+                <td>{{ course[2] }}</td>
+                <td>{{ course[3] }}</td>
+                <td>{{ course[4] }}</td>
+            </tr>
             {% endfor %}
-        </select>
-        <div class="col-md-2 col-sm-2 padd-0 m-clear">
-            <br>
-            <button type="submit" class="btn theme-btn cl-white seub-btn">Search</button>
-        </div>
-    </form>
+        </table>
+    </div>
 </body>
 </html>

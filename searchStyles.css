@@ -1,0 +1,125 @@
+#popupWindow {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+
+ @font-face {
+            font-family: 'Lapis';
+            src: url('path_to_lapis_font/Lapis-Regular.ttf') format('truetype');
+            /* Add additional font formats if necessary (e.g., woff, woff2) */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            --background-color-light: #fff; /* Default background color in light mode */
+            --text-color-light: #000; /* Default text color in light mode */
+            --background-color-dark: #000; /* Default background color in dark mode */
+            --text-color-dark: #fff; /* Default text color in dark mode */
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: var(--background-color-dark);
+                color: var(--text-color-dark);
+            }
+        }
+
+        h1 {
+            text-align: left; /* Align the title to the left */
+            font-family: 'Lapis', sans-serif; /* Use the Lapis font */
+            background-color: #ff8c00; /* Changed to orange */
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            text-align: left; /* Align the form content to the left */
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input[type="text"] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Improved search button styling */
+        button {
+            padding: 10px 20px;
+            background-color: #ff8c00; /* Orange */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff6b00; /* Darker shade of orange on hover */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px; font-size: small;
+            font-family: Arial, sans-serif;
+            text-align: left; /* Align all table cell content to the left */
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #ff8c00; /* Changed to orange */
+            color: #fff;
+        }
+
+        .info-container {
+            position: relative;
+        }
+
+        #infoIcon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        #infoContent {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1;
+            top: 30px;
+            left: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: left; /* Align the "Search courses" title to the left */
+        }
